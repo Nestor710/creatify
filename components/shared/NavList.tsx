@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation"
 const NavList = ({ startSlice, endSlice, isMobile = false }: { startSlice: number, endSlice?: number, isMobile?: boolean }) => {
     const pathname = usePathname()
 
-    const links = startSlice ? navLinks.slice(startSlice, endSlice) : navLinks;
+    const links = !isMobile ? navLinks.slice(startSlice, endSlice) : navLinks;
 
     return (
         <>
