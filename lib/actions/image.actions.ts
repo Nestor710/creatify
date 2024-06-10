@@ -12,7 +12,7 @@ import { v2 as cloudinary } from "cloudinary"
 const populateUser = (query: any) => query.populate({
     path: 'author',
     model: User,
-    select: '_id firstName lastName email'
+    select: '_id firstName lastName email clerkId'
 })
 
 // ADD IMAGE
