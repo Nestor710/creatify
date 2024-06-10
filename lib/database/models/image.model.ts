@@ -4,8 +4,8 @@ export interface IImage extends Document {
     title: string;
     transformationType: string;
     publicId: string;
-    secureUrl: URL;
-    transformationUrl?: URL;
+    secureURL: string;
+    transformationURL?: string;
     width?: number;
     height?: number;
     config?: object;
@@ -27,8 +27,8 @@ const ImageSchema = new Schema<IImage>(
         title: { type: String, require: true },
         transformationType: { type: String, require: true },
         publicId: { type: String, require: true },
-        secureUrl: { type: URL, require: true },
-        transformationUrl: { type: URL },
+        secureURL: { type: String, require: true },
+        transformationURL: { type: String },
         width: { type: Number },
         height: { type: Number },
         config: { type: Object },
@@ -43,6 +43,6 @@ const ImageSchema = new Schema<IImage>(
     }
 )
 
-const Image = models?.image || model('Image', ImageSchema)
+const Image = models.Image || model('Image', ImageSchema)
 
 export default Image;
