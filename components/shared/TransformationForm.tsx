@@ -161,7 +161,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
             }
           }))
           
-          }, 1000)()
+        }, 1000)()
         return onChangeField(value)
     }
 
@@ -312,7 +312,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
             </div>
           </form>
         </Form>
-      )
+    )
 }
 
 export default TransformationForm
