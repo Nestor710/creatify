@@ -10,7 +10,8 @@ const Sidebar = () => {
         <aside className="sidebar">
             <div className="flex size-full flex-col gap-4">
                 <Link href="/" className="sidebar-logo">
-                    <Image src="/logo.png" alt="logo" style={{ width: 'auto', height: 'auto' }} width={180} height={28}/>
+                    <Image src="/logo-icon.png" alt="logo" style={{ width: 'auto', height: 'auto' }} width={180} height={28}/>
+                    <h1 className="text-4xl font-semibold text-orange-500">Creatify AI</h1> 
                 </Link>
 
                 <nav className="sidebar-nav">
@@ -27,7 +28,7 @@ const Sidebar = () => {
                     </SignedIn>
 
                     <SignedOut>
-                        <Button asChild className="button bg-purple-gradient bg-cover">
+                        <Button asChild className="button bg-orange-gradient bg-cover">
                             <Link href="/sign-in">Login</Link>
                         </Button>
                     </SignedOut>

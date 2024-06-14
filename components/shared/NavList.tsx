@@ -18,7 +18,7 @@ const NavList = ({ startSlice, endSlice, isMobile = false }: { startSlice: numbe
                         isMobile 
                         ? `p-18 flex whitespace-nowrap text-dark-700 ${ isActive && 'gradient-text'}` 
                         : `sidebar-nav_element group ${
-                            isActive ? 'bg-purple-gradient text-white' : 'text-gray-500'
+                            isActive ? 'bg-orange-gradient text-white' : 'text-gray-500'
                         }`
                     } `}>
                         <Link className="sidebar-link cursor-pointer" href={link.route}>

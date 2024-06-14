@@ -31,6 +31,13 @@ const config = {
           500: "#7857FF",
           600: "#4318FF",
         },
+        orange: {
+          100: "#ffedd5",
+          200: "#fed7aa",
+          400: "#fdba74",
+          500: "#fb923c",
+          600: "#f97316",
+        },
         dark: {
           400: "#7986AC",
           500: "#606C80",
@@ -70,7 +77,7 @@ const config = {
         IBMPlex: ["var(--font-ibm-plex)"],
       },
       backgroundImage: {
-        "purple-gradient": "url('/assets/images/gradient-bg.svg')",
+        "orange-gradient": "url('/assets/images/gradient-bg.svg')",
         banner: "url('/assets/images/banner-bg.png')",
       },
       borderRadius: {
