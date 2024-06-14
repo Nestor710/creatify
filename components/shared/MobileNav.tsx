@@ -20,7 +20,7 @@ const MobileNav = () => {
         <header className="header">
             <Link href="/" className="flex items-center gap-2 md:py-2">
                 <Image src="/logo-icon.png" alt="logo" width={25} height={25}/>
-                <h1 className="text-2xl font-semibold text-orange-500">Creatify AI</h1> 
+                <h1 className="text-2xl font-semibold text-gradient">Creatify AI</h1> 
             </Link>
             <nav className="flex gap-2">
                 <SignedIn>
@@ -39,7 +39,7 @@ const MobileNav = () => {
                             <>
                                 <div className="flex flex-row gap-2">
                                     <Image src="/logo-icon.png" alt="logo" width={30} height={10}/>
-                                    <h1 className="text-2xl font-semibold text-orange-500">Creatify AI</h1> 
+                                    <h1 className="text-2xl font-semibold text-gradient">Creatify AI</h1> 
                                 </div>
                                 <ul className="header-nav_elements">
                                     {navLinks.map((link) => {

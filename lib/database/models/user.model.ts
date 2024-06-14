@@ -47,7 +47,7 @@ const UserSchema = new Schema<IUser>(
         },
         creditBalance: { 
             type: Number, 
-            default: 10
+            default: 50
         }
     },
     {

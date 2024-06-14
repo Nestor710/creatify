@@ -360,6 +360,18 @@
   .transformed-placeholder {
     @apply flex-center p-14-medium h-full min-h-72 flex-col gap-5 rounded-[16px] border border-dashed bg-orange-100/20 shadow-inner;
   }
+
+  .header-container {
+    @apply wrapper flex-1 relative top-[-40px] h-5 w-full p-5; 
+  }
+
+  .header-content {
+    @apply justify-end flex gap-2 w-full;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-orange-300 via-orange-500 to-orange-600 text-transparent bg-clip-text;
+  }
 }
 
 /* =====  CLERK OVERRIDES */

@@ -25,6 +25,7 @@ import { getCldImageUrl } from "next-cloudinary"
 import { addImage, updateImage } from "@/lib/actions/image.actions"
 import { useRouter } from "next/navigation"
 import { InsufficientCreditsModal } from "./InsufficientCreditsModal"
+import { useCreditBalanceStore } from "@/store/creditBalance"
 
 export const formSchema = z.object({
     title: z.string(),
@@ -45,6 +46,8 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
     const [transformationConfig, setTransformationConfig] = useState(config);
     const [isPending, startTransition] = useTransition()
     const router = useRouter()
+
+    const { setCredit } = useCreditBalanceStore()
 
     const initialValues = data && action == 'Update' ? {
         title: data?.title,
@@ -175,7 +178,10 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         setNewTransformation(null)
 
         startTransition( async () => {
-          await updateCredits(userId, creditFee)
+          const credits = await updateCredits(userId, -transformationType.creditFee)
+
+          setCredit(credits.creditBalance)
+
         } )
     }
 
@@ -188,7 +194,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
     return (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            {creditBalance < Math.abs(creditFee) && <InsufficientCreditsModal />}
+            {creditBalance < Math.abs(-transformationType.creditFee) && <InsufficientCreditsModal />}
             <CustomField 
                 control={form.control}
                 name="title"

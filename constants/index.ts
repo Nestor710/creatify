@@ -126,6 +126,7 @@ export const navLinks = [
       subTitle: "Refine images by removing noise and imperfections",
       config: { restore: true },
       icon: "image.svg",
+      creditFee: 5
     },
     removeBackground: {
       type: "removeBackground",
@@ -133,6 +134,7 @@ export const navLinks = [
       subTitle: "Removes the background of the image using AI",
       config: { removeBackground: true },
       icon: "camera.svg",
+      creditFee: 10,
     },
     fill: {
       type: "fill",
@@ -140,6 +142,7 @@ export const navLinks = [
       subTitle: "Enhance an image's dimensions using AI outpainting",
       config: { fillBackground: true },
       icon: "stars.svg",
+      creditFee: 7
     },
     remove: {
       type: "remove",
@@ -149,6 +152,7 @@ export const navLinks = [
         remove: { prompt: "", removeShadow: true, multiple: true },
       },
       icon: "scan.svg",
+      creditFee: 6
     },
     recolor: {
       type: "recolor",
@@ -158,6 +162,7 @@ export const navLinks = [
         recolor: { prompt: "", to: "", multiple: true },
       },
       icon: "filter.svg",
+      creditFee: 6
     },
   };
   

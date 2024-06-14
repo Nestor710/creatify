@@ -11,7 +11,7 @@ const Sidebar = () => {
             <div className="flex size-full flex-col gap-4">
                 <Link href="/" className="sidebar-logo">
                     <Image src="/logo-icon.png" alt="logo" style={{ width: 'auto', height: 'auto' }} width={180} height={28}/>
-                    <h1 className="text-4xl font-semibold text-orange-500">Creatify AI</h1> 
+                    <h1 className="text-4xl font-semibold text-gradient">Creatify AI</h1>  
                 </Link>
 
                 <nav className="sidebar-nav">
@@ -22,7 +22,10 @@ const Sidebar = () => {
                         <ul className="sidebar-nav_elements">
                             <NavList startSlice={6} />
                             <li className="flex-center cursor-pointer gap-2 p-4">
-                                <UserButton afterSignOutUrl="/" showName/>
+                                <UserButton
+                                    afterSignOutUrl="/" 
+                                    showName
+                                />
                             </li>
                         </ul>
                     </SignedIn>
