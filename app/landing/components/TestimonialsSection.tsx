@@ -46,8 +46,8 @@ export function TestimonialsSection() {
               ))}
             </div>
             <p className="text-gray-700 text-sm">
-              "Esta herramienta ha revolucionado mi flujo de trabajo. Edito
-              imágenes en segundos que antes me tomaban horas."
+              &quot;Esta herramienta ha revolucionado mi flujo de trabajo. Edito
+              imágenes en segundos que antes me tomaban horas.&quot;
             </p>
           </div>
 
@@ -82,8 +82,8 @@ export function TestimonialsSection() {
               ))}
             </div>
             <p className="text-gray-700 text-sm">
-              "La eliminación de fondos es increíblemente precisa. Nos ha
-              ahorrado cientos de horas de trabajo manual."
+              &quot;La eliminación de fondos es increíblemente precisa. Nos ha
+              ahorrado cientos de horas de trabajo manual.&quot;
             </p>
           </div>
 
@@ -118,8 +118,8 @@ export function TestimonialsSection() {
               ))}
             </div>
             <p className="text-gray-700 text-sm">
-              "La edición de videos con IA es asombrosa. En minutos tengo
-              videos listos para publicar en mis redes."
+              &quot;La edición de videos con IA es asombrosa. En minutos tengo
+              videos listos para publicar en mis redes.&quot;
             </p>
           </div>
         </div>
