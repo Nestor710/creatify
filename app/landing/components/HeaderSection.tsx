@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { SignedIn, SignedOut, useAuth } from "@clerk/nextjs";
+import { SignedIn, SignedOut, useAuth, UserButton } from "@clerk/nextjs";
 
 export function HeaderSection() {
 	const router = useRouter();
@@ -62,6 +62,9 @@ export function HeaderSection() {
 							Registrarse
 						</button>
 					</SignedOut>
+					<SignedIn>
+						<UserButton />
+					</SignedIn>
 				</div>
 			</div>
 		</header>
