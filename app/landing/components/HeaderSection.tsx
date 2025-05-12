@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useAuth } from "@clerk/nextjs";
+import { SignedIn, SignedOut, useAuth } from "@clerk/nextjs";
 
 export function HeaderSection() {
 	const router = useRouter();
@@ -48,18 +48,20 @@ export function HeaderSection() {
 					</a>
 				</nav>
 				<div className="flex gap-3">
-					<button
-						onClick={handleSignIn}
-						className="px-4 py-2 rounded-md border border-gray-200 font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-					>
-						Iniciar sesión
-					</button>
-					<button
-						onClick={handleSignUp}
-						className="px-4 py-2 rounded-md bg-orange-500 font-medium text-white hover:bg-orange-600 transition-colors"
-					>
-						Registrarse
-					</button>
+					<SignedOut>
+						<button
+							onClick={handleSignIn}
+							className="px-4 py-2 rounded-md border border-gray-200 font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+						>
+							Iniciar sesión
+						</button>
+						<button
+							onClick={handleSignUp}
+							className="px-4 py-2 rounded-md bg-orange-500 font-medium text-white hover:bg-orange-600 transition-colors"
+						>
+							Registrarse
+						</button>
+					</SignedOut>
 				</div>
 			</div>
 		</header>
