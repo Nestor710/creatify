@@ -2,38 +2,35 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ClerkProvider, RedirectToSignIn, SignedOut } from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 
-const IBMPlex = IBM_Plex_Sans({ 
-  subsets: ["latin"],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-ibm-plex'
+const IBMPlex = IBM_Plex_Sans({
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700"],
+	variable: "--font-ibm-plex",
 });
 
 export const metadata: Metadata = {
-  title: "CreatifyAI",
-  description: "AI-powered image generator",
+	title: "CreatifyAI",
+	description: "AI-powered image generator",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <ClerkProvider appearance={{
-      variables: { colorPrimary: '#fb923c' },
-    }}>
-      <html lang="en">
-        <body className={cn("font-IBMPlex antialiased", IBMPlex.variable)}>
-        <header>
-          <SignedOut>
-            <RedirectToSignIn />
-          </SignedOut>
-          </header>
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
-  );
+	return (
+		<ClerkProvider
+			appearance={{
+				variables: { colorPrimary: "#fb923c" },
+			}}
+		>
+			<html lang="en">
+				<body className={cn("font-IBMPlex antialiased", IBMPlex.variable)}>
+					{children}
+				</body>
+			</html>
+		</ClerkProvider>
+	);
 }
