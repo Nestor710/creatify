@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "../ui/button"
 import NavList from "./NavList"
+import { navLinksNew, profileLinks } from "@/constants"
 
 const Sidebar = () => {
 
@@ -17,10 +18,10 @@ const Sidebar = () => {
                 <nav className="sidebar-nav">
                     <SignedIn>
                         <ul className="sidebar-nav_elements">
-                            <NavList startSlice={0} endSlice={6} />
+                            <NavList navLinks={navLinksNew} />
                         </ul>
                         <ul className="sidebar-nav_elements">
-                            <NavList startSlice={6} />
+                            <NavList navLinks={profileLinks} />
                             <li className="flex-center cursor-pointer gap-2 p-4">
                                 <UserButton
                                     afterSignOutUrl="/" 
