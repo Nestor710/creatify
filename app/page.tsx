@@ -4,9 +4,9 @@ import { HeroSection } from "./landing/components/HeroSection";
 import { FeaturesSection } from "./landing/components/FeaturesSection";
 import { HowItWorksSection } from "./landing/components/HowItWorksSection";
 import { PricingSection } from "./landing/components/PricingSection";
-import { TestimonialsSection } from "./landing/components/TestimonialsSection";
 import { CTASection } from "./landing/components/CTASection";
 import { HeaderSection } from "./landing/components/HeaderSection";
+import { OurMissionSection } from "./landing/components/OurMissionSection";
 
 export default function Home() {
 	return (
@@ -16,7 +16,8 @@ export default function Home() {
 			<FeaturesSection />
 			<HowItWorksSection />
 			<PricingSection />
-			<TestimonialsSection />
+			<OurMissionSection />
+
 			<CTASection />
 			<FooterSection />
 		</div>
