@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { SignedIn, SignedOut, useAuth, UserButton } from "@clerk/nextjs";
+import Image from "next/image";
 
 export function HeaderSection() {
 	const router = useRouter();
@@ -77,7 +78,7 @@ export function HeaderSection() {
 									<UserButton.Action
 										label="Dashboard"
 										labelIcon={
-											<img src="/assets/icons/dashboard.svg" alt="dashboard" />
+											<Image src="/assets/icons/dashboard.svg" alt="dashboard" />
 										}
 										onClick={() => router.push("/dashboard")}
 									/>

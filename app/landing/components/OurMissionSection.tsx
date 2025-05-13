@@ -65,9 +65,9 @@ export function OurMissionSection() {
 								<div className="p-6 text-white">
 									<h3 className="font-bold text-xl mb-2">Our Story</h3>
 									<p className="text-sm">
-										Creatify began with a simple question: "What if everyone
+										Creatify began with a simple question: &quot;What if everyone
 										could edit like a pro without spending years learning
-										complex software?"
+										complex software?&quot;
 									</p>
 								</div>
 							</div>
