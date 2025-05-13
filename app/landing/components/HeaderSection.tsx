@@ -73,17 +73,13 @@ export function HeaderSection() {
 							</button>
 						</SignedOut>
 						<SignedIn>
-							<UserButton>
-								<UserButton.MenuItems>
-									<UserButton.Action
-										label="Dashboard"
-										labelIcon={
-											<Image src="/assets/icons/dashboard.svg" alt="dashboard" />
-										}
-										onClick={() => router.push("/dashboard")}
-									/>
-								</UserButton.MenuItems>
-							</UserButton>
+							<button
+								onClick={() => router.push("/dashboard")}
+								className="text-gray-700 hover:text-orange-600 font-medium text-sm"
+							>
+								Dashboard
+							</button>
+							<UserButton />
 						</SignedIn>
 					</div>
 				</div>
