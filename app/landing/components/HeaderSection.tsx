@@ -16,63 +16,75 @@ export function HeaderSection() {
 	};
 
 	return (
-		<header className="fixed w-full bg-white/95 backdrop-blur-md z-50 py-4 border-b border-gray-100">
-			<div className="container mx-auto px-4 flex justify-between items-center">
-				<div className="flex items-center gap-2">
-					<span className="font-bold text-2xl text-orange-500">Creatify</span>
-				</div>
-				<nav className="hidden md:flex gap-8">
-					<a
-						href="#features"
-						className="font-medium text-gray-700 hover:text-orange-500"
-					>
-						Funciones
-					</a>
-					<a
-						href="#how-it-works"
-						className="font-medium text-gray-700 hover:text-orange-500"
-					>
-						Cómo funciona
-					</a>
-					<a
-						href="#pricing"
-						className="font-medium text-gray-700 hover:text-orange-500"
-					>
-						Precios
-					</a>
-					<a
-						href="#testimonials"
-						className="font-medium text-gray-700 hover:text-orange-500"
-					>
-						Opiniones
-					</a>
-				</nav>
-				<div className="flex gap-3">
-					<SignedOut>
-						<button
-							onClick={handleSignIn}
-							className="px-4 py-2 rounded-md border border-gray-200 font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-						>
-							Iniciar sesión
-						</button>
-						<button
-							onClick={handleSignUp}
-							className="px-4 py-2 rounded-md bg-orange-500 font-medium text-white hover:bg-orange-600 transition-colors"
-						>
-							Registrarse
-						</button>
-					</SignedOut>
-					<SignedIn>
-						<UserButton>
-							<UserButton.MenuItems>
-								<UserButton.Action
-									label="Dashboard"
-									labelIcon={<img src="/assets/icons/dashboard.svg" alt="dashboard" />}
-									onClick={() => router.push("/dashboard")}
-								/>
-							</UserButton.MenuItems>
-						</UserButton>
-					</SignedIn>
+		<header className="fixed w-full bg-white z-50 py-4 border-b border-gray-200">
+			<div className="max-w-7xl mx-auto px-8 sm:px-28">
+				{/* Estructura de 3 secciones con porcentajes específicos */}
+				<div className="flex items-center">
+					{/* Logo a la izquierda - 25% */}
+					<div className="w-1/4 pl-5">
+						<span className="font-bold text-2xl text-orange-500">Creatify</span>
+					</div>
+
+					{/* Links de navegación centralizados - 50% */}
+					<div className="w-2/4">
+						<nav className="flex justify-center space-x-8">
+							<a
+								href="#features"
+								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
+							>
+								Features
+							</a>
+							<a
+								href="#how-it-works"
+								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
+							>
+								How It Works
+							</a>
+							<a
+								href="#pricing"
+								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
+							>
+								Pricing
+							</a>
+							<a
+								href="#mission"
+								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
+							>
+								Our Mission
+							</a>
+						</nav>
+					</div>
+
+					{/* Botones de autenticación a la extrema derecha - 25% */}
+					<div className="w-1/4 flex justify-end items-center space-x-4 pr-5">
+						<SignedOut>
+							<button
+								onClick={handleSignIn}
+								className="text-gray-700 hover:text-orange-600 font-medium text-sm"
+							>
+								Log in
+							</button>
+							<button
+								onClick={handleSignUp}
+								className="ml-4 px-4 py-2 rounded-md border border-gray-200 font-medium text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+							>
+								Sign up
+							</button>
+						</SignedOut>
+						<SignedIn>
+							<UserButton>
+								<UserButton.MenuItems>
+									<UserButton.Action
+										label="Dashboard"
+										labelIcon={
+											<img src="/assets/icons/dashboard.svg" alt="dashboard" />
+										}
+										onClick={() => router.push("/dashboard")}
+									/>
+								</UserButton.MenuItems>
+							</UserButton>
+						</SignedIn>
+					</div>
 				</div>
 			</div>
 		</header>
