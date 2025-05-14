@@ -46,7 +46,7 @@ const NavList = ({ isMobile = false, navLinks }: NavListProps) => {
             {links.map((link:NavLink) => {
                 const isActive = link.route === pathname
                 return (
-                    <li key={link.route} className={`${
+                    <li key={link.label} className={`${
                         isMobile 
                         ? `p-18 flex whitespace-nowrap text-dark-700 ${ isActive && 'gradient-text'}` 
                         : `rounded-full group ${
@@ -78,34 +78,33 @@ const NavList = ({ isMobile = false, navLinks }: NavListProps) => {
                                         />
                                         {link.label}
                                     </button>
-                                    {
-                                        !openLinks[link.label] && (
-                                            <ul key={link.route} className="ml-5">
-                                                {link.subLinks.map((subLink:SubLink) => {
-                                                    const isActive = subLink.route === pathname
-                                                    return (
-                                                        <li key={subLink.route} className={`${
-                                                            isMobile 
-                                                            ? `p-18 flex whitespace-nowrap text-dark-700 ${ isActive && 'gradient-text'}` 
-                                                            : `sidebar-nav_element group ${
-                                                                isActive ? 'bg-orange-gradient text-white' : 'text-gray-500'
-                                                            }`
-                                                        } `}>
-                                                            <Link className="sidebar-link cursor-pointer" href={subLink.route}>
-                                                                <Image 
-                                                                    src={subLink.icon} 
-                                                                    alt="logo"
-                                                                    width={24}
-                                                                    height={24}
-                                                                />
-                                                                {subLink.label}
-                                                            </Link>
-                                                        </li>
-                                                    )
-                                                })}
-                                            </ul>
-                                        )
-                                    }
+                                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openLinks[link.label] ? 'max-h-0 opacity-0' : 'max-h-96 opacity-100'}`}>
+                                        <ul className="ml-5">
+                                            {link.subLinks.map((subLink:SubLink) => {
+                                                const isActive = subLink.route === pathname
+                                                return (
+                                                    <li key={subLink.label} className={`${
+                                                        isMobile 
+                                                        ? `p-18 flex whitespace-nowrap text-dark-700 ${ isActive && 'gradient-text'}` 
+                                                        : `sidebar-nav_element group ${
+                                                            isActive ? 'bg-orange-gradient text-white' : 'text-gray-500'
+                                                        }`
+                                                    } `}>
+                                                        <Link className="sidebar-link cursor-pointer" href={subLink.route}>
+                                                            <Image 
+                                                                src={subLink.icon} 
+                                                                alt="logo"
+                                                                width={24}
+                                                                height={24}
+                                                            />
+                                                            {subLink.label}
+                                                        </Link>
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul>
+                                        
+                                    </div>
                                 </div>
                             )
                         }
