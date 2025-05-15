@@ -165,7 +165,6 @@ const CloudinaryVideoCropper: React.FC = () => {
       <CldUploadWidget
         uploadPreset="jsm_creatify"
         options={{
-            cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
             uploadPreset: 'jsm_creatify',
             resourceType: 'video',
             sources: ['local'] as const,
