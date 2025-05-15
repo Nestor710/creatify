@@ -23,29 +23,34 @@ export function PricingSection() {
 					{/* Free Plan */}
 					<div className="p-6 rounded-lg bg-white shadow-sm border border-gray-200 hover:shadow-md transition-all">
 						<h3 className="text-lg font-medium mb-2">Free</h3>
-						<div className="text-3xl font-bold mb-4">
-							€0
-							<span className="text-sm text-gray-500 font-normal">/month</span>
-						</div>
+						<div className="text-3xl font-bold mb-4">$0</div>
 						<ul className="mb-6 space-y-2">
 							<li className="flex items-center text-sm">
 								<CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
-								<span className="text-gray-700">5 edits per day</span>
+								<span className="text-gray-700">20 Credits</span>
 							</li>
 							<li className="flex items-center text-sm">
 								<CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
-								<span className="text-gray-700">Standard quality</span>
+								<span className="text-gray-700">20 Free Credits</span>
 							</li>
 							<li className="flex items-center text-sm">
 								<CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
-								<span className="text-gray-700">Basic background removal</span>
+								<span className="text-gray-700">Basic Access to Services</span>
+							</li>
+							<li className="flex items-center text-sm">
+								<CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
+								<span className="text-gray-700">Priority Customer Support</span>
+							</li>
+							<li className="flex items-center text-sm">
+								<CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
+								<span className="text-gray-700">Priority Updates</span>
 							</li>
 						</ul>
 						<button
 							onClick={() => console.log("Free plan selected")}
 							className="w-full px-6 py-2 rounded-md bg-orange-500 text-white font-medium hover:bg-orange-600 transition-colors"
 						>
-							Start for free
+							Free Consumable
 						</button>
 					</div>
 
@@ -54,69 +59,69 @@ export function PricingSection() {
 						<div className="inline-block px-3 py-1 text-xs font-medium bg-orange-600 rounded-full mb-2">
 							RECOMMENDED
 						</div>
-						<h3 className="text-lg font-medium mb-2">Pro</h3>
-						<div className="text-3xl font-bold mb-4">
-							€9.99
-							<span className="text-sm text-orange-200 font-normal">
-								/month
-							</span>
-						</div>
+						<h3 className="text-lg font-medium mb-2">Pro Package</h3>
+						<div className="text-3xl font-bold mb-4">$40</div>
 						<ul className="mb-6 space-y-2">
 							<li className="flex items-center text-sm">
 								<CheckCircle className="w-4 h-4 mr-2 text-orange-200 flex-shrink-0" />
-								<span>100 edits per month</span>
+								<span>120 Credits</span>
 							</li>
 							<li className="flex items-center text-sm">
 								<CheckCircle className="w-4 h-4 mr-2 text-orange-200 flex-shrink-0" />
-								<span>HD quality</span>
+								<span>120 Credits</span>
 							</li>
 							<li className="flex items-center text-sm">
 								<CheckCircle className="w-4 h-4 mr-2 text-orange-200 flex-shrink-0" />
-								<span>All editing tools</span>
+								<span>Full Access to Services</span>
 							</li>
 							<li className="flex items-center text-sm">
 								<CheckCircle className="w-4 h-4 mr-2 text-orange-200 flex-shrink-0" />
-								<span>Priority support</span>
+								<span>Priority Customer Support</span>
+							</li>
+							<li className="flex items-center text-sm">
+								<CheckCircle className="w-4 h-4 mr-2 text-orange-200 flex-shrink-0" />
+								<span>Priority Updates</span>
 							</li>
 						</ul>
 						<button
 							onClick={() => console.log("Pro plan selected")}
 							className="w-full py-2 rounded-md bg-white text-orange-500 font-medium hover:bg-gray-100 transition-colors"
 						>
-							Get started
+							Buy Credit
 						</button>
 					</div>
 
-					{/* Enterprise Plan */}
+					{/* Premium Plan */}
 					<div className="p-6 rounded-lg bg-white shadow-sm border border-gray-200 hover:shadow-md transition-all">
-						<h3 className="text-lg font-medium mb-2">Enterprise</h3>
-						<div className="text-3xl font-bold mb-4">
-							€29.99
-							<span className="text-sm text-gray-500 font-normal">/month</span>
-						</div>
+						<h3 className="text-lg font-medium mb-2">Premium Package</h3>
+						<div className="text-3xl font-bold mb-4">$199</div>
 						<ul className="mb-6 space-y-2">
 							<li className="flex items-center text-sm">
 								<CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
-								<span className="text-gray-700">Unlimited edits</span>
+								<span className="text-gray-700">2000 Credits</span>
 							</li>
 							<li className="flex items-center text-sm">
 								<CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
-								<span className="text-gray-700">4K quality</span>
+								<span className="text-gray-700">2000 Credits</span>
 							</li>
 							<li className="flex items-center text-sm">
 								<CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
-								<span className="text-gray-700">API access</span>
+								<span className="text-gray-700">Full Access to Services</span>
 							</li>
 							<li className="flex items-center text-sm">
 								<CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
-								<span className="text-gray-700">Dedicated account manager</span>
+								<span className="text-gray-700">Priority Customer Support</span>
+							</li>
+							<li className="flex items-center text-sm">
+								<CheckCircle className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
+								<span className="text-gray-700">Priority Updates</span>
 							</li>
 						</ul>
 						<button
-							onClick={() => console.log("Enterprise plan selected")}
+							onClick={() => console.log("Premium plan selected")}
 							className="w-full px-6 py-2 rounded-md bg-orange-500 text-white font-medium hover:bg-orange-600 transition-colors"
 						>
-							Contact sales
+							Buy Credit
 						</button>
 					</div>
 				</div>

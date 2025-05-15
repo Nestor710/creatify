@@ -2,11 +2,14 @@
 
 import { useRouter } from "next/navigation";
 import { SignedIn, SignedOut, useAuth, UserButton } from "@clerk/nextjs";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 export function HeaderSection() {
 	const router = useRouter();
 	const { isSignedIn } = useAuth();
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	const handleSignIn = () => {
 		router.push("/sign-in");
@@ -16,14 +19,136 @@ export function HeaderSection() {
 		router.push("/sign-up");
 	};
 
+	const toggleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
+	};
+
 	return (
 		<header className="fixed w-full bg-white z-50 py-4 border-b border-gray-200">
-			<div className="max-w-7xl mx-auto px-8 sm:px-28">
-				{/* Estructura de 3 secciones con porcentajes específicos */}
-				<div className="flex items-center">
+			<div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-28">
+				{/* Mobile Navigation */}
+				<div className="flex items-center justify-between lg:hidden">
+					{/* Logo */}
+					<div className="pl-0 sm:pl-2">
+						<div className="flex items-center">
+							<Image
+								src="/logo-icon.png"
+								alt="Creatify logo"
+								width={25}
+								height={25}
+								className="mr-2"
+								priority
+							/>
+							<span className="font-bold text-2xl text-orange-500">
+								Creatify
+							</span>
+						</div>
+					</div>
+
+					{/* Hamburger button for mobile */}
+					<button
+						onClick={toggleMenu}
+						className="text-gray-700 hover:text-orange-500"
+						aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+					>
+						{isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+					</button>
+				</div>
+
+				{/* Mobile navigation overlay */}
+				{isMenuOpen && (
+					<div className="lg:hidden mt-4">
+						<nav className="flex flex-col space-y-3">
+							<a
+								href="#features"
+								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
+								onClick={() => setIsMenuOpen(false)}
+							>
+								Features
+							</a>
+							<a
+								href="#how-it-works"
+								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
+								onClick={() => setIsMenuOpen(false)}
+							>
+								How It Works
+							</a>
+							<a
+								href="#pricing"
+								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
+								onClick={() => setIsMenuOpen(false)}
+							>
+								Pricing
+							</a>
+							<a
+								href="#mission"
+								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
+								onClick={() => setIsMenuOpen(false)}
+							>
+								Our Mission
+							</a>
+						</nav>
+
+						<div className="mt-4 pt-4 border-t border-gray-200 flex flex-col space-y-3">
+							<SignedOut>
+								<button
+									onClick={() => {
+										handleSignIn();
+										setIsMenuOpen(false);
+									}}
+									className="w-full flex justify-center text-gray-700 hover:text-orange-600 font-medium text-base py-2"
+								>
+									Log in
+								</button>
+								<button
+									onClick={() => {
+										handleSignUp();
+										setIsMenuOpen(false);
+									}}
+									className="w-full px-4 py-2 rounded-md border border-gray-200 font-medium text-base text-gray-700 hover:bg-gray-50 transition-colors"
+								>
+									Sign up
+								</button>
+							</SignedOut>
+							<SignedIn>
+								<div className="flex justify-start py-2 px-2">
+									<UserButton>
+										<UserButton.MenuItems>
+											<UserButton.Action
+												label="Dashboard"
+												labelIcon={
+													<img
+														src="/assets/icons/dashboard.svg"
+														alt="dashboard"
+													/>
+												}
+												onClick={() => router.push("/dashboard")}
+											/>
+										</UserButton.MenuItems>
+									</UserButton>
+								</div>
+							</SignedIn>
+						</div>
+					</div>
+				)}
+
+				{/* Desktop Navigation */}
+				<div className="hidden lg:flex items-center">
 					{/* Logo a la izquierda - 25% */}
 					<div className="w-1/4 pl-5">
-						<span className="font-bold text-2xl text-orange-500">Creatify</span>
+						<div className="flex items-center">
+							<Image
+								src="/logo-icon.png"
+								alt="Creatify logo"
+								width={25}
+								height={25}
+								className="mr-2"
+								priority
+							/>
+							<span className="font-bold text-2xl text-orange-500">
+								Creatify
+							</span>
+						</div>
 					</div>
 
 					{/* Links de navegación centralizados - 50% */}
@@ -33,7 +158,7 @@ export function HeaderSection() {
 								href="#features"
 								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
 							>
-								Features
+								Main Features
 							</a>
 							<a
 								href="#how-it-works"
@@ -46,12 +171,6 @@ export function HeaderSection() {
 								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
 							>
 								Pricing
-							</a>
-							<a
-								href="#mission"
-								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
-							>
-								Our Mission
 							</a>
 						</nav>
 					</div>

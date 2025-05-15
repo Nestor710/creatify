@@ -6,18 +6,17 @@ import { HowItWorksSection } from "./landing/components/HowItWorksSection";
 import { PricingSection } from "./landing/components/PricingSection";
 import { CTASection } from "./landing/components/CTASection";
 import { HeaderSection } from "./landing/components/HeaderSection";
-import { OurMissionSection } from "./landing/components/OurMissionSection";
+import { ComparisonSection } from "./landing/components/ComparisonSection";
 
 export default function Home() {
 	return (
 		<div className="min-h-screen bg-orange-50 text-gray-900">
 			<HeaderSection />
 			<HeroSection />
+			<ComparisonSection />
 			<FeaturesSection />
 			<HowItWorksSection />
 			<PricingSection />
-			<OurMissionSection />
-
 			<CTASection />
 			<FooterSection />
 		</div>

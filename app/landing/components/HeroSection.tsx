@@ -32,14 +32,13 @@ export function HeroSection() {
 					</div>
 				</div>
 
-				{/* Demo Image */}
-				<div className="mt-16 max-w-5xl mx-auto rounded-lg overflow-hidden shadow-lg">
-					<div className="aspect-[16/9] bg-gray-100 relative">
+				<div className="mt-16 max-w-5xl mx-auto rounded-lg overflow-hidden ">
+					<div className="aspect-[16/9] relative">
 						<Image
-							src="/demo-image.png"
-							alt="Platform demo"
+							src="/hero.webp"
+							alt="Platform demo"	
 							fill
-							className="object-contain"
+							className="object-cover"
 							priority
 						/>
 					</div>
