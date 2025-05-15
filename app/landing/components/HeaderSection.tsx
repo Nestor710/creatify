@@ -6,17 +6,6 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
-function DashboardButton(router: any) {
-	return (
-		<button
-			onClick={() => router.push("/dashboard")}
-			className="text-gray-700 hover:text-orange-600 font-medium text-sm"
-		>
-			Dashboard
-		</button>
-	);
-}
-
 export function HeaderSection() {
 	const router = useRouter();
 	const { isSignedIn } = useAuth();
@@ -33,6 +22,18 @@ export function HeaderSection() {
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
+
+	function DashboardButton() {
+		return (
+			<button
+				onClick={() => router.push("/dashboard")}
+				className="text-gray-700 hover:text-orange-600 font-medium text-sm"
+			>
+				Dashboard
+			</button>
+		);
+	}
+	
 
 	return (
 		<header className="fixed w-full bg-white z-50 py-4 border-b border-gray-200">
