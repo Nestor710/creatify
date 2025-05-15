@@ -6,6 +6,17 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
+function DashboardButton(router: any) {
+	return (
+		<button
+			onClick={() => router.push("/dashboard")}
+			className="text-gray-700 hover:text-orange-600 font-medium text-sm"
+		>
+			Dashboard
+		</button>
+	);
+}
+
 export function HeaderSection() {
 	const router = useRouter();
 	const { isSignedIn } = useAuth();
@@ -111,21 +122,9 @@ export function HeaderSection() {
 								</button>
 							</SignedOut>
 							<SignedIn>
-								<div className="flex justify-start py-2 px-2">
-									<UserButton>
-										<UserButton.MenuItems>
-											<UserButton.Action
-												label="Dashboard"
-												labelIcon={
-													<img
-														src="/assets/icons/dashboard.svg"
-														alt="dashboard"
-													/>
-												}
-												onClick={() => router.push("/dashboard")}
-											/>
-										</UserButton.MenuItems>
-									</UserButton>
+								<div className="flex justify-start py-2 px-2 gap-x-3">
+									<UserButton/>
+									<DashboardButton/>
 								</div>
 							</SignedIn>
 						</div>
@@ -192,13 +191,8 @@ export function HeaderSection() {
 							</button>
 						</SignedOut>
 						<SignedIn>
-							<button
-								onClick={() => router.push("/dashboard")}
-								className="text-gray-700 hover:text-orange-600 font-medium text-sm"
-							>
-								Dashboard
-							</button>
 							<UserButton />
+							<DashboardButton/>
 						</SignedIn>
 					</div>
 				</div>
