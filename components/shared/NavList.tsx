@@ -1,35 +1,113 @@
 "use client"
-import { navLinks } from "@/constants"
+import { profileLinks } from "@/constants"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useState } from "react"
 
-const NavList = ({ startSlice, endSlice, isMobile = false }: { startSlice: number, endSlice?: number, isMobile?: boolean }) => {
+interface SubLink {
+  label: string;
+  route: string;
+  icon: string;
+}
+
+interface NavLink {
+  label: string;
+  route?: string; 
+  icon: string;
+  subLinks?: SubLink[];
+}
+
+interface OpenLinksState {
+  [key: string]: boolean;
+}
+
+interface NavListProps {
+  isMobile?: boolean;
+  navLinks: NavLink[];
+}
+
+
+const NavList = ({ isMobile = false, navLinks }: NavListProps) => {
     const pathname = usePathname()
+    const [openLinks, setOpenLinks] = useState<OpenLinksState>({})
 
-    const links = !isMobile ? navLinks.slice(startSlice, endSlice) : navLinks;
+    const links = !isMobile ? navLinks : navLinks.concat(profileLinks);
+
+    const toggleSection = (label: string): void => {
+        setOpenLinks(prev => ({
+            ...prev,
+            [label]: !prev[label]
+        }))
+    }
 
     return (
         <>
-            {links.map((link) => {
+            {links.map((link:NavLink) => {
                 const isActive = link.route === pathname
                 return (
-                    <li key={link.route} className={`${
+                    <li key={link.label} className={`${
                         isMobile 
                         ? `p-18 flex whitespace-nowrap text-dark-700 ${ isActive && 'gradient-text'}` 
-                        : `sidebar-nav_element group ${
+                        : `rounded-full group ${
                             isActive ? 'bg-orange-gradient text-white' : 'text-gray-500'
                         }`
                     } `}>
-                        <Link className="sidebar-link cursor-pointer" href={link.route}>
-                            <Image 
-                                src={link.icon} 
-                                alt="logo"
-                                width={24}
-                                height={24}
-                            />
-                            {link.label}
-                        </Link>
+                        {
+                            !link.subLinks ? (
+                                <Link className="sidebar-link cursor-pointer hover:text-gradient" href={link.route || '#'}>
+                                    <Image 
+                                        src={link.icon} 
+                                        alt="logo"
+                                        width={24}
+                                        height={24}
+                                    />
+                                    {link.label}
+                                </Link>
+                            ) : (
+                                <div className="">
+                                    <button 
+                                        className="sidebar-link cursor-pointer hover:text-gradient" 
+                                        onClick={() => toggleSection(link.label)}
+                                    >
+                                        <Image 
+                                            src={link.icon} 
+                                            alt="logo"
+                                            width={24}
+                                            height={24}
+                                        />
+                                        {link.label}
+                                    </button>
+                                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openLinks[link.label] ? 'max-h-0 opacity-0' : 'max-h-96 opacity-100'}`}>
+                                        <ul className="ml-5">
+                                            {link.subLinks.map((subLink:SubLink) => {
+                                                const isActive = subLink.route === pathname
+                                                return (
+                                                    <li key={subLink.label} className={`${
+                                                        isMobile 
+                                                        ? `p-18 flex whitespace-nowrap text-dark-700 ${ isActive && 'gradient-text'}` 
+                                                        : `sidebar-nav_element group ${
+                                                            isActive ? 'bg-orange-gradient text-white' : 'text-gray-500'
+                                                        }`
+                                                    } `}>
+                                                        <Link className="sidebar-link cursor-pointer" href={subLink.route}>
+                                                            <Image 
+                                                                src={subLink.icon} 
+                                                                alt="logo"
+                                                                width={24}
+                                                                height={24}
+                                                            />
+                                                            {subLink.label}
+                                                        </Link>
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                            )
+                        }
                     </li>
                 )
             })}

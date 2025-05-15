@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import animations from "@midudev/tailwind-animations"
 
 const config = {
   darkMode: ["class"],
@@ -101,7 +102,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), animations],
 } satisfies Config
 
 export default config
