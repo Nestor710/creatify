@@ -162,7 +162,7 @@ const CloudinaryVideoCropper: React.FC = () => {
       </div>
 
       {/* Widget de carga de Cloudinary */}
-      <CldUploadWidget
+{/*       <CldUploadWidget
         uploadPreset="jsm_creatify"
         options={{
             uploadPreset: 'jsm_creatify',
@@ -185,7 +185,7 @@ const CloudinaryVideoCropper: React.FC = () => {
             {isUploading ? 'Subiendo...' : 'Subir Video'}
           </button>
         )}
-      </CldUploadWidget>
+      </CldUploadWidget> */}
 
       {/* Mostrar errores */}
       {errorMessage && (
