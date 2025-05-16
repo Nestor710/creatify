@@ -166,7 +166,6 @@ const CloudinaryVideoCropper = ({userId}: { userId: string }) => {
             <CldUploadWidget
               uploadPreset="jsm_creatify"
               options={{
-                  uploadPreset: 'jsm_creatify',
                   resourceType: 'video',
                   sources: ['local'] as const,
                   multiple: false,
