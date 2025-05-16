@@ -1,14 +1,28 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { SignedIn, SignedOut, useAuth, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
+const Items = [
+	{
+		href: "#features",
+		label: "Features",
+	},
+	{
+		href: "#how-it-works",
+		label: "How It Works",
+	},
+	{
+		href: "#pricing",
+		label: "Pricing",
+	},
+]
+
 export function HeaderSection() {
 	const router = useRouter();
-	const { isSignedIn } = useAuth();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	const handleSignIn = () => {
@@ -27,7 +41,7 @@ export function HeaderSection() {
 		return (
 			<button
 				onClick={() => router.push("/dashboard")}
-				className="text-gray-700 hover:text-orange-600 font-medium text-sm"
+				className="text-gray-700 hover:text-orange-600 hover:scale-110 transition-all duration-300 font-medium text-sm"
 			>
 				Dashboard
 			</button>
@@ -38,9 +52,7 @@ export function HeaderSection() {
 	return (
 		<header className="fixed w-full bg-white z-50 py-4 border-b border-gray-200">
 			<div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-28">
-				{/* Mobile Navigation */}
 				<div className="flex items-center justify-between lg:hidden">
-					{/* Logo */}
 					<div className="pl-0 sm:pl-2">
 						<div className="flex items-center">
 							<Image
@@ -56,8 +68,6 @@ export function HeaderSection() {
 							</span>
 						</div>
 					</div>
-
-					{/* Hamburger button for mobile */}
 					<button
 						onClick={toggleMenu}
 						className="text-gray-700 hover:text-orange-500"
@@ -66,39 +76,21 @@ export function HeaderSection() {
 						{isMenuOpen ? <X size={24} /> : <Menu size={24} />}
 					</button>
 				</div>
-
-				{/* Mobile navigation overlay */}
 				{isMenuOpen && (
 					<div className="lg:hidden mt-4">
 						<nav className="flex flex-col space-y-3">
-							<a
-								href="#features"
-								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
-								onClick={() => setIsMenuOpen(false)}
-							>
-								Features
-							</a>
-							<a
-								href="#how-it-works"
-								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
-								onClick={() => setIsMenuOpen(false)}
-							>
-								How It Works
-							</a>
-							<a
-								href="#pricing"
-								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
-								onClick={() => setIsMenuOpen(false)}
-							>
-								Pricing
-							</a>
-							<a
-								href="#mission"
-								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
-								onClick={() => setIsMenuOpen(false)}
-							>
-								Our Mission
-							</a>
+							{
+								Items.map((item) => (
+									<a
+										key={item.label}
+										href={item.href}
+										className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
+										onClick={() => setIsMenuOpen(false)}
+									>
+										{item.label}
+									</a>
+								))
+							}
 						</nav>
 
 						<div className="mt-4 pt-4 border-t border-gray-200 flex flex-col space-y-3">
@@ -131,10 +123,7 @@ export function HeaderSection() {
 						</div>
 					</div>
 				)}
-
-				{/* Desktop Navigation */}
 				<div className="hidden lg:flex items-center">
-					{/* Logo a la izquierda - 25% */}
 					<div className="w-1/4 pl-5">
 						<div className="flex items-center">
 							<Image
@@ -150,32 +139,21 @@ export function HeaderSection() {
 							</span>
 						</div>
 					</div>
-
-					{/* Links de navegación centralizados - 50% */}
 					<div className="w-2/4">
 						<nav className="flex justify-center space-x-8">
-							<a
-								href="#features"
-								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
-							>
-								Main Features
-							</a>
-							<a
-								href="#how-it-works"
-								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
-							>
-								How It Works
-							</a>
-							<a
-								href="#pricing"
-								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
-							>
-								Pricing
-							</a>
+							{
+								Items.map((item) => (
+									<a
+										key={item.label}
+										href={item.href}
+										className="text-gray-600 hover:text-orange-500 hover:scale-110 transition-all duration-300 px-3 py-2 text-sm font-medium"
+									>
+										{item.label}
+									</a>
+								))
+							}
 						</nav>
 					</div>
-
-					{/* Botones de autenticación a la extrema derecha - 25% */}
 					<div className="w-1/4 flex justify-end items-center space-x-4 pr-5">
 						<SignedOut>
 							<button
@@ -192,8 +170,8 @@ export function HeaderSection() {
 							</button>
 						</SignedOut>
 						<SignedIn>
-							<UserButton />
 							<DashboardButton/>
+							<UserButton />
 						</SignedIn>
 					</div>
 				</div>
