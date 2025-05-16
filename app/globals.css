@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -385,4 +389,8 @@
   font-size: 16px;
   font-weight: 600;
   color: #384262;
+}
+
+.gradient-orange-text {
+  @apply bg-gradient-to-r from-orange-300 via-orange-500 to-orange-600 text-transparent bg-clip-text;
 }
