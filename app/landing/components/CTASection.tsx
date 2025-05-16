@@ -1,9 +1,12 @@
-// src/components/CTASection.tsx
 "use client";
 
-import { ChevronRight } from "lucide-react";
+import GetStartedBtn from "@/components/ui/GetStartedBtn";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export function CTASection() {
+    const router = useRouter();
+    
     return (
         <section className="py-16 bg-gradient-to-r from-orange-100 to-cream-100">
             <div className="container mx-auto px-4 text-center">
@@ -15,18 +18,13 @@ export function CTASection() {
                     content with our technology
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                        onClick={() => console.log("Start now")}
-                        className="px-6 py-3 rounded-md bg-orange-500 text-white font-medium hover:bg-orange-600 transition-colors flex items-center justify-center"
-                    >
-                        Get Started <ChevronRight className="ml-2" size={16} />
-                    </button>
-                    <button
-                        onClick={() => console.log("View demos")}
-                        className="px-6 py-3 rounded-md border border-orange-500 text-orange-500 font-medium hover:bg-orange-100 transition-colors"
+                    <GetStartedBtn />
+                    <Link
+                        href="#demos"
+                        className="px-6 py-3 rounded-full border border-orange-500 text-orange-500 font-medium hover:bg-orange-100 hover:scale-110 transition-all duration-300"
                     >
                         View Demos
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>
