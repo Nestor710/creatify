@@ -4,6 +4,8 @@ import { useCreditBalanceStore } from "@/store/creditBalance";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
+import NumberFlow from "@number-flow/react";
+import clsx from "clsx";
 
 const HeaderContent = ({ userId }: { userId: string | null }) => {
 
@@ -26,7 +28,11 @@ const HeaderContent = ({ userId }: { userId: string | null }) => {
         <div className="header-container">
             <div className="header-content">
                 <h3 className="font-semibold">
-                    Credits: <span className="text-orange-500">{credit}</span>
+                    <span className="mr-2">Credits:</span>
+                    <NumberFlow 
+                        value={credit}
+                        className="text-lg text-orange-500"
+                    />
                 </h3> 
             </div>
         </div>

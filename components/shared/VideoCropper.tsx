@@ -139,10 +139,10 @@ const CloudinaryVideoCropper = ({userId}: { userId: string }) => {
   return (
     <div className="cloudinary-video-cropper">
       <div className="mb-4">
-        <div className="grid grid-cols-2 justify-between">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 justify-between">
+          <div className="w-full">
             <label className="text-dark-600 text-xl font-semibold mb-3">Choose a aspect ratio:</label>
-            <div className="flex flex-wrap gap-x-5 my-6">
+            <div className="flex flex-col md:flex-row md:flex-wrap gap-x-2 md:gap-x-5 gap-y-2 md:gap-y-0 my-6">
               {socials.map((social) => (
                 <SocialsFormat
                   key={social.id}
@@ -161,7 +161,7 @@ const CloudinaryVideoCropper = ({userId}: { userId: string }) => {
               ))}
             </div>
           </div>
-          <div>
+          <div className="w-full">
             <label className="text-dark-600 text-xl font-semibold mb-3">Upload a video:</label>
             <CldUploadWidget
               uploadPreset="jsm_creatify"
