@@ -5,11 +5,27 @@ import { getUserById } from "@/lib/actions/user.actions"
 import { auth } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
 
+interface SearchParamProps {
+  params: {
+    type: string
+  }
+}
+
+export async function generateStaticParams() {
+  return [
+    { type: 'restore' },
+    { type: 'removeBackground' },
+    { type: 'fill' },
+    { type: 'remove' },
+    { type: 'recolor' },
+  ];
+}
+
 const AddTransformationTypePage = async ({ params: { type } }: SearchParamProps ) => {
 
   const { userId } = auth()
 
-  const transformation = transformationTypes[type]
+  const transformation = transformationTypes[type as TransformationTypeKey]
 
   if (!userId) redirect('/sign-in')
 
