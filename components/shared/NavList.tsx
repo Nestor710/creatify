@@ -1,5 +1,6 @@
 "use client"
 import { profileLinks } from "@/constants"
+import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -31,6 +32,7 @@ interface NavListProps {
 const NavList = ({ isMobile = false, navLinks }: NavListProps) => {
     const pathname = usePathname()
     const [openLinks, setOpenLinks] = useState<OpenLinksState>({})
+    const [openSubLinks, setOpenSubLinks] = useState<string | null>(null)
 
     const links = !isMobile ? navLinks : navLinks.concat(profileLinks);
 
@@ -39,6 +41,10 @@ const NavList = ({ isMobile = false, navLinks }: NavListProps) => {
             ...prev,
             [label]: !prev[label]
         }))
+    }
+
+    const toggleSubSection = (label: string): void => {
+        setOpenSubLinks(prev => prev === label ? null : label)
     }
 
     return (
@@ -67,7 +73,7 @@ const NavList = ({ isMobile = false, navLinks }: NavListProps) => {
                             ) : (
                                 <div className="">
                                     <button 
-                                        className="sidebar-link cursor-pointer hover:text-gradient" 
+                                        className="sidebar-link cursor-pointer hover:text-orange-500 transition-colors duration-300 flex items-center" 
                                         onClick={() => toggleSection(link.label)}
                                     >
                                         <Image 
@@ -77,6 +83,11 @@ const NavList = ({ isMobile = false, navLinks }: NavListProps) => {
                                             height={24}
                                         />
                                         {link.label}
+                                        {openLinks[link.label] ? (
+                                            <ChevronDownIcon className="h-5 w-5 z-10" />
+                                        ) : (
+                                            <ChevronUpIcon className="h-5 w-5 z-10" />
+                                        )}
                                     </button>
                                     <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openLinks[link.label] ? 'max-h-0 opacity-0' : 'max-h-96 opacity-100'}`}>
                                         <ul className="ml-5">

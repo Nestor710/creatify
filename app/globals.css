@@ -183,7 +183,7 @@ html {
   }
 
   .input-field {
-    @apply rounded-[16px] border-2 border-orange-200/20 shadow-sm shadow-orange-200/15 text-dark-600 disabled:opacity-100 p-16-semibold h-[50px] md:h-[54px] focus-visible:ring-offset-0 px-4 py-3 focus-visible:ring-transparent !important;
+    @apply rounded-[16px] border-2 border-orange-500/20 shadow-md shadow-orange-200/15 text-dark-600 disabled:opacity-100 p-16-semibold h-[50px] md:h-[54px] focus-visible:ring-offset-0 px-4 py-3 focus-visible:ring-transparent !important;
   }
 
   .search-field {
@@ -224,7 +224,7 @@ html {
 
   /* Home Page */
   .home {
-    @apply sm:flex-center hidden h-72 flex-col gap-4 rounded-[20px] border bg-banner bg-cover bg-no-repeat p-10 shadow-inner;
+    @apply sm:flex-center hidden h-72 flex-col gap-4 rounded-[20px] border bg-banner bg-cover bg-no-repeat p-10 shadow-lg shadow-orange-300 border-none;
   }
 
   .home-heading {
@@ -284,7 +284,7 @@ html {
   }
 
   .collection-card {
-    @apply flex flex-1 cursor-pointer flex-col gap-5 rounded-[16px] border-2 border-orange-200/15 bg-white p-4 shadow-xl shadow-orange-200/10 transition-all hover:shadow-orange-200/20;
+    @apply flex flex-1 cursor-pointer flex-col gap-5 rounded-[16px] border-2 border-orange-500/15 bg-white p-4 shadow-xl shadow-orange-500/20 transition-all hover:shadow-orange-500/30 hover:scale-105 duration-500;
   }
 
   /* MediaUploader Component */
@@ -316,7 +316,7 @@ html {
 
   /* Sidebar Component */
   .sidebar {
-    @apply hidden h-screen w-72 bg-white p-5 shadow-md shadow-orange-200/50 lg:flex;
+    @apply hidden h-screen w-72 bg-white p-5 shadow-2xl shadow-orange-500/50 lg:flex;
   }
 
   .sidebar-logo {
