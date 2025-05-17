@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { Control } from "react-hook-form";
 import { z } from "zod";
 
@@ -27,6 +27,16 @@ export const CustomField = ({
   formLabel,
   className,
 }: CustomFieldProps) => {
+  // Utilizamos forwardRef para el componente de renderizado interno
+  const ForwardedRender = forwardRef(({ field }: { field: any }, ref) => {
+    // Combinamos el ref con el campo original
+    const fieldWithRef = { ...field, ref };
+    return render({ field: fieldWithRef });
+  });
+
+  // Asignamos un displayName para ayudar con el debugging
+  ForwardedRender.displayName = `ForwardedRender_${name}`;
+
   return (
     <FormField
       control={control}
@@ -34,7 +44,9 @@ export const CustomField = ({
       render={({ field }) => (
         <FormItem className={className}>
           {formLabel && <FormLabel>{formLabel}</FormLabel>}
-          <FormControl>{render({ field })}</FormControl>
+          <FormControl>
+            <ForwardedRender field={field} />
+          </FormControl>
           <FormMessage />
         </FormItem>
       )}
