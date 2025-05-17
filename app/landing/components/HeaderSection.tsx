@@ -41,7 +41,7 @@ export function HeaderSection() {
 		return (
 			<button
 				onClick={() => router.push("/dashboard")}
-				className="text-gray-700 hover:text-orange-600 hover:scale-110 transition-all duration-300 font-medium text-sm"
+				className="text-orange-600 hover:scale-110 transition-all duration-300 font-medium text-md"
 			>
 				Dashboard
 			</button>
