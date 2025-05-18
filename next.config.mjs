@@ -8,7 +8,13 @@ const nextConfig = {
                 port: ''
             }
         ]
-    }
+    },
+    onDemandEntries: {
+        // cuánto tiempo mantener una página inactiva (ms)
+        maxInactiveAge: 60 * 1000,
+        // cuántas páginas mantener en el buffer
+        pagesBufferLength: 10,
+    },
 };
 
 export default nextConfig;

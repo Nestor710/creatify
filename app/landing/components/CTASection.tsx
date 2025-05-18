@@ -1,4 +1,3 @@
-// src/components/CTASection.tsx
 "use client";
 
 import GetStartedBtn from "@/components/ui/GetStartedBtn";
