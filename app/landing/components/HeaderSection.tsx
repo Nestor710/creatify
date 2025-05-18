@@ -5,8 +5,12 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-
+import Link from "next/link";
 const Items = [
+	{
+		href: "#tools",
+		label: "Tools",
+	},
 	{
 		href: "#features",
 		label: "Features",
@@ -19,7 +23,7 @@ const Items = [
 		href: "#pricing",
 		label: "Pricing",
 	},
-]
+];
 
 export function HeaderSection() {
 	const router = useRouter();
@@ -27,10 +31,6 @@ export function HeaderSection() {
 
 	const handleSignIn = () => {
 		router.push("/sign-in");
-	};
-
-	const handleSignUp = () => {
-		router.push("/sign-up");
 	};
 
 	const toggleMenu = () => {
@@ -47,14 +47,13 @@ export function HeaderSection() {
 			</button>
 		);
 	}
-	
 
 	return (
 		<header className="fixed top-0 w-full bg-transparent backdrop-blur-lg z-50 py-4">
 			<div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-28">
 				<div className="flex items-center justify-between lg:hidden">
 					<div className="pl-0 sm:pl-2">
-						<div className="flex items-center">
+						<Link href="#demos" className="flex items-center">
 							<Image
 								src="/logo-icon.png"
 								alt="Creatify logo"
@@ -66,7 +65,7 @@ export function HeaderSection() {
 							<span className="font-bold text-2xl text-orange-500">
 								Creatify
 							</span>
-						</div>
+						</Link>
 					</div>
 					<button
 						onClick={toggleMenu}
@@ -77,47 +76,36 @@ export function HeaderSection() {
 					</button>
 				</div>
 				{isMenuOpen && (
-					<div className="lg:hidden mt-4">
+					<div className="lg:hidden mt-4 bg-white/95 backdrop-blur-md rounded-lg shadow-lg border border-orange-100 p-4">
 						<nav className="flex flex-col space-y-3">
-							{
-								Items.map((item) => (
-									<a
-										key={item.label}
-										href={item.href}
-										className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
-										onClick={() => setIsMenuOpen(false)}
-									>
-										{item.label}
-									</a>
-								))
-							}
+							{Items.map((item) => (
+								<a
+									key={item.label}
+									href={item.href}
+									className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
+									onClick={() => setIsMenuOpen(false)}
+								>
+									{item.label}
+								</a>
+							))}
 						</nav>
 
-						<div className="mt-4 pt-4 border-t border-gray-200 flex flex-col space-y-3">
+						<div className="mt-6 pt-4 border-t border-orange-200 flex flex-col space-y-3">
 							<SignedOut>
 								<button
 									onClick={() => {
 										handleSignIn();
 										setIsMenuOpen(false);
 									}}
-									className="w-full flex justify-center text-gray-700 hover:text-orange-600 font-medium text-base py-2"
+									className="w-full flex justify-center bg-white text-orange-600 hover:bg-orange-50 font-medium text-base py-3 rounded-md transition-colors border border-orange-200"
 								>
 									Log in
-								</button>
-								<button
-									onClick={() => {
-										handleSignUp();
-										setIsMenuOpen(false);
-									}}
-									className="w-full px-4 py-2 rounded-md border border-gray-200 font-medium text-base text-gray-700 hover:bg-gray-50 transition-colors"
-								>
-									Sign up
 								</button>
 							</SignedOut>
 							<SignedIn>
 								<div className="flex justify-start py-2 px-2 gap-x-3">
-									<UserButton/>
-									<DashboardButton/>
+									<UserButton />
+									<DashboardButton />
 								</div>
 							</SignedIn>
 						</div>
@@ -125,7 +113,7 @@ export function HeaderSection() {
 				)}
 				<div className="hidden lg:flex items-center">
 					<div className="w-1/4 pl-5">
-						<div className="flex items-center">
+						<Link href="#demos" className="flex items-center">
 							<Image
 								src="/logo-icon.png"
 								alt="Creatify logo"
@@ -137,40 +125,32 @@ export function HeaderSection() {
 							<span className="font-bold text-2xl text-orange-500">
 								Creatify
 							</span>
-						</div>
+						</Link>
 					</div>
 					<div className="w-2/4">
 						<nav className="flex justify-center space-x-8">
-							{
-								Items.map((item) => (
-									<a
-										key={item.label}
-										href={item.href}
-										className="text-gray-600 hover:text-orange-500 hover:scale-110 transition-all duration-300 px-3 py-2 text-sm font-medium"
-									>
-										{item.label}
-									</a>
-								))
-							}
+							{Items.map((item) => (
+								<a
+									key={item.label}
+									href={item.href}
+									className="text-gray-600 hover:text-orange-500 hover:scale-110 transition-all duration-300 px-3 py-2 text-sm font-medium"
+								>
+									{item.label}
+								</a>
+							))}
 						</nav>
 					</div>
 					<div className="w-1/4 flex justify-end items-center space-x-4 pr-5">
 						<SignedOut>
 							<button
 								onClick={handleSignIn}
-								className="text-gray-700 hover:text-orange-600 font-medium text-sm"
+								className="px-4 py-2 bg-white text-orange-600 hover:bg-orange-50 font-medium text-sm rounded-md transition-colors border border-orange-200"
 							>
 								Log in
 							</button>
-							<button
-								onClick={handleSignUp}
-								className="ml-4 px-4 py-2 rounded-md border border-gray-200 font-medium text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-							>
-								Sign up
-							</button>
 						</SignedOut>
 						<SignedIn>
-							<DashboardButton/>
+							<DashboardButton />
 							<UserButton />
 						</SignedIn>
 					</div>
