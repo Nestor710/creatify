@@ -15,7 +15,7 @@ const PageVideoCrop = async () => {
   return (
     <>
       <Header 
-        title="Smart Video Crop" 
+        title="Smart Clips Crop" 
         subtitle="Crop videos to your desired dimensions"
         creditFee={CREDIT_FEE}
       />
