@@ -6,6 +6,21 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
+const Items = [
+	{
+		href: "#features",
+		label: "Features",
+	},
+	{
+		href: "#how-it-works",
+		label: "How It Works",
+	},
+	{
+		href: "#pricing",
+		label: "Pricing",
+	},
+];
+
 export function HeaderSection() {
 	const router = useRouter();
 	const { isSignedIn } = useAuth();
@@ -22,6 +37,17 @@ export function HeaderSection() {
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
+
+	function DashboardButton() {
+		return (
+			<button
+				onClick={() => router.push("/dashboard")}
+				className="text-orange-600 hover:scale-110 transition-all duration-300 font-medium text-md"
+			>
+				Dashboard
+			</button>
+		);
+	}
 
 	return (
 		<header className="fixed w-full bg-white z-50 py-4 border-b border-gray-200">
@@ -55,48 +81,29 @@ export function HeaderSection() {
 					</button>
 				</div>
 
-				{/* Mobile navigation overlay */}
 				{isMenuOpen && (
-					<div className="lg:hidden mt-4">
+					<div className="lg:hidden mt-4 bg-white/95 backdrop-blur-md rounded-lg shadow-lg border border-orange-100 p-4">
 						<nav className="flex flex-col space-y-3">
-							<a
-								href="#features"
-								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
-								onClick={() => setIsMenuOpen(false)}
-							>
-								Features
-							</a>
-							<a
-								href="#how-it-works"
-								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
-								onClick={() => setIsMenuOpen(false)}
-							>
-								How It Works
-							</a>
-							<a
-								href="#pricing"
-								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
-								onClick={() => setIsMenuOpen(false)}
-							>
-								Pricing
-							</a>
-							<a
-								href="#mission"
-								className="text-gray-600 hover:text-orange-500 px-2 py-2 text-base font-medium"
-								onClick={() => setIsMenuOpen(false)}
-							>
-								Our Mission
-							</a>
+							{Items.map((item) => (
+								<a
+									key={item.label}
+									href={item.href}
+									className="text-gray-800 hover:text-orange-500 hover:bg-orange-50 px-4 py-3 text-base font-medium rounded-md transition-all duration-300"
+									onClick={() => setIsMenuOpen(false)}
+								>
+									{item.label}
+								</a>
+							))}
 						</nav>
 
-						<div className="mt-4 pt-4 border-t border-gray-200 flex flex-col space-y-3">
+						<div className="mt-6 pt-4 border-t border-orange-200 flex flex-col space-y-3">
 							<SignedOut>
 								<button
 									onClick={() => {
 										handleSignIn();
 										setIsMenuOpen(false);
 									}}
-									className="w-full flex justify-center text-gray-700 hover:text-orange-600 font-medium text-base py-2"
+									className="w-full flex justify-center bg-white text-orange-600 hover:bg-orange-50 font-medium text-base py-3 rounded-md transition-colors border border-orange-200"
 								>
 									Log in
 								</button>
@@ -105,34 +112,21 @@ export function HeaderSection() {
 										handleSignUp();
 										setIsMenuOpen(false);
 									}}
-									className="w-full px-4 py-2 rounded-md border border-gray-200 font-medium text-base text-gray-700 hover:bg-gray-50 transition-colors"
+									className="w-full px-4 py-3 rounded-md bg-orange-500 font-medium text-base text-white hover:bg-orange-600 transition-colors"
 								>
 									Sign up
 								</button>
 							</SignedOut>
 							<SignedIn>
-								<div className="flex justify-start py-2 px-2">
-									<UserButton>
-										<UserButton.MenuItems>
-											<UserButton.Action
-												label="Dashboard"
-												labelIcon={
-													<img
-														src="/assets/icons/dashboard.svg"
-														alt="dashboard"
-													/>
-												}
-												onClick={() => router.push("/dashboard")}
-											/>
-										</UserButton.MenuItems>
-									</UserButton>
+								<div className="flex justify-start items-center py-3 px-4 gap-x-4 bg-orange-50 rounded-md">
+									<UserButton />
+									<DashboardButton />
 								</div>
 							</SignedIn>
 						</div>
 					</div>
 				)}
 
-				{/* Desktop Navigation */}
 				<div className="hidden lg:flex items-center">
 					{/* Logo a la izquierda - 25% */}
 					<div className="w-1/4 pl-5">
@@ -154,24 +148,15 @@ export function HeaderSection() {
 					{/* Links de navegación centralizados - 50% */}
 					<div className="w-2/4">
 						<nav className="flex justify-center space-x-8">
-							<a
-								href="#features"
-								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
-							>
-								Main Features
-							</a>
-							<a
-								href="#how-it-works"
-								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
-							>
-								How It Works
-							</a>
-							<a
-								href="#pricing"
-								className="text-gray-600 hover:text-orange-500 px-3 py-2 text-sm font-medium"
-							>
-								Pricing
-							</a>
+							{Items.map((item) => (
+								<a
+									key={item.label}
+									href={item.href}
+									className="text-gray-600 hover:text-orange-500 hover:scale-110 transition-all duration-300 px-3 py-2 text-sm font-medium"
+								>
+									{item.label}
+								</a>
+							))}
 						</nav>
 					</div>
 
@@ -180,24 +165,19 @@ export function HeaderSection() {
 						<SignedOut>
 							<button
 								onClick={handleSignIn}
-								className="text-gray-700 hover:text-orange-600 font-medium text-sm"
+								className="px-4 py-2 bg-white text-orange-600 hover:bg-orange-50 font-medium text-sm rounded-md transition-colors border border-orange-200"
 							>
 								Log in
 							</button>
 							<button
 								onClick={handleSignUp}
-								className="ml-4 px-4 py-2 rounded-md border border-gray-200 font-medium text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+								className="px-4 py-2 rounded-md bg-orange-500 font-medium text-sm text-white hover:bg-orange-600 transition-colors"
 							>
 								Sign up
 							</button>
 						</SignedOut>
 						<SignedIn>
-							<button
-								onClick={() => router.push("/dashboard")}
-								className="text-gray-700 hover:text-orange-600 font-medium text-sm"
-							>
-								Dashboard
-							</button>
+							<DashboardButton />
 							<UserButton />
 						</SignedIn>
 					</div>
