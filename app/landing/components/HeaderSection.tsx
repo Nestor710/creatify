@@ -33,10 +33,6 @@ export function HeaderSection() {
 		router.push("/sign-in");
 	};
 
-	const handleSignUp = () => {
-		router.push("/sign-up");
-	};
-
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
@@ -105,15 +101,6 @@ export function HeaderSection() {
 								>
 									Log in
 								</button>
-								<button
-									onClick={() => {
-										handleSignUp();
-										setIsMenuOpen(false);
-									}}
-									className="w-full px-4 py-3 rounded-md bg-orange-500 font-medium text-base text-white hover:bg-orange-600 transition-colors"
-								>
-									Sign up
-								</button>
 							</SignedOut>
 							<SignedIn>
 								<div className="flex justify-start py-2 px-2 gap-x-3">
@@ -160,12 +147,6 @@ export function HeaderSection() {
 								className="px-4 py-2 bg-white text-orange-600 hover:bg-orange-50 font-medium text-sm rounded-md transition-colors border border-orange-200"
 							>
 								Log in
-							</button>
-							<button
-								onClick={handleSignUp}
-								className="px-4 py-2 rounded-md bg-orange-500 font-medium text-sm text-white hover:bg-orange-600 transition-colors"
-							>
-								Sign up
 							</button>
 						</SignedOut>
 						<SignedIn>

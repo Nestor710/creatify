@@ -57,7 +57,7 @@ interface VideoData {
   created_at: string;
 }
 
-const CloudinaryVideoCropper = ({userId}: { userId: string }) => {
+const CloudinaryVideoCropper = ({ userId, creditFee }: { userId: string, creditFee?: number }) => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');

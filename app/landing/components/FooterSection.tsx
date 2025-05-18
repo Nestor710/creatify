@@ -7,6 +7,7 @@ export function FooterSection() {
                     <a href="https://nestordev.vercel.app/" aria-label="Néstor Portafolio" target="_blank" className="text-sm hover:text-orange-500 transition-colors duration-300">Néstor</a>
                     <span className="px-1 text-sm">&</span>
                     <a href="https://github.com/leonardaraujo" aria-label="Leonardo GitHub" target="_blank" className="text-sm hover:text-orange-500 transition-colors duration-300">Leonardo</a>
+                    <p className="text-sm ml-1">for educational purposes.</p>
                 </div>
             </div>
         </footer>
