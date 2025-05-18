@@ -36,6 +36,7 @@ const AddTransformationTypePage = async ({ params: { type } }: SearchParamProps 
       <Header
         title={transformation.title}
         subtitle={transformation.subTitle}
+        creditFee={transformation.creditFee}
       />
       <section className="mt-10">
         <TransformationForm 
