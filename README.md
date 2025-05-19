@@ -73,5 +73,5 @@ Puedes ver el código completo del proyecto aquí:
 
 ## 👥Equipo
 
-Hecho con ❤️ por [Néstor]([https://github.com/Nestor710](https://nestordev.vercel.app/))  y [Leonardo](https://github.com/leonardaraujo)
+Hecho con ❤️ por [Néstor](https://nestordev.vercel.app)  y [Leonardo](https://github.com/leonardaraujo)
 ¡Gracias por visitar este proyecto!
