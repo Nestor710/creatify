@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function FooterSection() {
 	return (
 		<footer className="py-8 bg-gradient-to-r from-orange-50 to-white border-t border-orange-100 text-gray-700">
@@ -5,7 +7,13 @@ export function FooterSection() {
 				{/* Diseño móvil - todo centrado en columna */}
 				<div className="lg:hidden flex flex-col items-center">
 					<div className="flex items-center mb-3">
-						<img src="/logo-icon.png" alt="Creatify" className="h-6 w-6 mr-2" />
+						<Image 
+							src="/logo-icon.png" 
+							alt="Creatify" 
+							className="h-6 w-6 mr-2" 
+							width={25}
+							height={25}
+						/>
 						<span className="text-orange-500 font-bold text-xl">Creatify</span>
 					</div>
 					<p className="text-xs text-gray-500 mb-4">
@@ -47,7 +55,13 @@ export function FooterSection() {
 				<div className="hidden lg:grid grid-cols-3 items-center text-center py-2">
 					{/* Sección izquierda */}
 					<div className="flex justify-start items-center space-x-2">
-						<img src="/logo-icon.png" alt="Creatify" className="h-6 w-6" />
+						<Image 
+							src="/logo-icon.png" 
+							alt="Creatify" 
+							className="h-6 w-6" 
+							width={25}
+							height={25}
+						/>
 						<span className="text-orange-500 font-bold text-xl">Creatify</span>
 					</div>
 
