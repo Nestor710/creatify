@@ -14,7 +14,7 @@ export function HowItWorksSection() {
 
 				<div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
 					{/* Step 1 */}
-					<div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-sm">
+					<div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-sm shadow-orange-300 border-gray-200 border">
 						<div className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center font-medium text-xl mb-4">
 							1
 						</div>
@@ -25,7 +25,7 @@ export function HowItWorksSection() {
 					</div>
 
 					{/* Step 2 */}
-					<div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-sm">
+					<div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-sm shadow-orange-300 border-gray-200 border">
 						<div className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center font-medium text-xl mb-4">
 							2
 						</div>
@@ -37,7 +37,7 @@ export function HowItWorksSection() {
 					</div>
 
 					{/* Step 3 */}
-					<div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-sm">
+					<div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-sm shadow-orange-300 border-gray-200 border">
 						<div className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center font-medium text-xl mb-4">
 							3
 						</div>
