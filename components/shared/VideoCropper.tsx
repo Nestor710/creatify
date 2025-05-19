@@ -206,7 +206,7 @@ const CloudinaryVideoCropper = ({ userId, creditFee }: { userId: string, creditF
 
       {videoData && !isVideoProcessing && (
         <div className="mt-10 flex flex-col">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mb-5">
             <label className="text-orange-600 text-xl font-semibold mb-3">Transformed video:</label>
             <Button
               className="bg-orange-500/80 hover:bg-orange-600 transition-colors duration-500 ease-in-out text-white rounded-full"

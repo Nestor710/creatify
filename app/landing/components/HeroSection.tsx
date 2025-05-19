@@ -54,7 +54,7 @@ export function HeroSection() {
 			// Crear ámbito para anime.js
 			const mainScope = createScope().add((self) => {
 				// 1. Animación del título
-				const titleAnimation = animate(".letter", {
+				animate(".letter", {
 					opacity: [0, 1],
 					translateY: [10, 0],
 					scale: [0.8, 1],
@@ -102,7 +102,7 @@ export function HeroSection() {
 				});
 
 				// Añadir métodos al scope
-				self.add("titleAnimation", titleAnimation);
+				// self.add("titleAnimation", titleAnimation);
 			});
 
 			// Limpieza al desmontar
