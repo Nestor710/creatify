@@ -20,7 +20,6 @@ export function HeroSection() {
 	});
 
 	useEffect(() => {
-		// Referencias a los elementos
 		const titleElement = titleRef.current;
 		const subtitleElement = subtitleRef.current;
 		const buttonElement = buttonRef.current;
@@ -33,38 +32,18 @@ export function HeroSection() {
 			buttonElement.style.opacity = "0";
 			imageElement.style.opacity = "0";
 
-			// Preparar título para animación
-			const text = titleElement.textContent ?? "";
-			const wrappedText = text
-				.split(" ")
-				.map((word) => {
-					return `<span class='word' style='white-space: nowrap;'>${word
-						.split("")
-						.map(
-							(char) =>
-								`<span class='letter' style='opacity:0;display:inline-block'>${char}</span>`,
-						)
-						.join("")}</span>`;
-				})
-				.join(" ");
-
-			titleElement.innerHTML = wrappedText;
-			titleElement.style.opacity = "1";
-
-			// Crear ámbito para anime.js
-			const mainScope = createScope().add((self) => {
-				// 1. Animación del título
-				animate(".letter", {
+			const mainScope = createScope().add(() => {
+				// 1. Animar el título (sin modificar su HTML interno)
+				animate(titleElement, {
 					opacity: [0, 1],
-					translateY: [10, 0],
-					scale: [0.8, 1],
-					delay: (el, i) => i * 20,
-					duration: 100,
+					translateY: [20, 0],
+					scale: [0.95, 1],
+					duration: 800,
 					easing: "easeOutExpo",
 					complete: () => {
 						setAnimationComplete((prev) => ({ ...prev, title: true }));
 
-						// 2. Animación del subtítulo (comienza cuando termina el título)
+						// 2. Subtítulo
 						subtitleElement.style.opacity = "1";
 						animate(subtitleElement, {
 							opacity: [0, 1],
@@ -74,7 +53,7 @@ export function HeroSection() {
 							complete: () => {
 								setAnimationComplete((prev) => ({ ...prev, subtitle: true }));
 
-								// 3. Animación del botón (comienza cuando termina el subtítulo)
+								// 3. Botón
 								buttonElement.style.opacity = "1";
 								animate(buttonElement, {
 									opacity: [0, 1],
@@ -85,7 +64,7 @@ export function HeroSection() {
 									complete: () => {
 										setAnimationComplete((prev) => ({ ...prev, button: true }));
 
-										// 4. Animación de la imagen (comienza cuando termina el botón)
+										// 4. Imagen
 										imageElement.style.opacity = "1";
 										animate(imageElement, {
 											opacity: [0, 1],
@@ -100,14 +79,10 @@ export function HeroSection() {
 						});
 					},
 				});
-
-				// Añadir métodos al scope
-				// self.add("titleAnimation", titleAnimation);
 			});
 
-			// Limpieza al desmontar
 			return () => {
-				if (mainScope) mainScope.revert();
+				mainScope.revert();
 			};
 		}
 	}, []);
@@ -118,7 +93,7 @@ export function HeroSection() {
 				<div className="max-w-3xl mx-auto text-center mb-16">
 					<h1
 						ref={titleRef}
-						className="opacity-0 text-4xl md:text-5xl font-bold mb-6 text-gray-700 break-keep"
+						className="opacity-0 text-4xl md:text-5xl font-bold mb-6 break-keep text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600"
 					>
 						Image and Video Editing with AI in Seconds
 					</h1>
