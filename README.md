@@ -37,15 +37,15 @@ Creatify es una herramienta basada en inteligencia artificial que permite a los 
 
 ### 🔹 Home
 
-[](https://github.com/user-attachments/assets/466655db-7d44-422c-94c5-47f0a8bd3fa6)
+![postspark_export_2025-05-19_12-17-37](https://github.com/user-attachments/assets/151bba5e-960a-4753-bcb6-362b8f675a69)
 
 ### 🔹 Clerk Log in
 
-[](https://github.com/user-attachments/assets/c2c9deb7-cb3c-48b9-8445-623fd40e8f82)
+![postspark_export_2025-05-19_12-18-51](https://github.com/user-attachments/assets/d898a622-8d2d-4a8d-acbb-454bbb47b0aa)
 
 ### 🔹 Dashboard
 
-[](https://github.com/user-attachments/assets/f37a6401-7fb1-4bb4-aa4b-5bfc2c5fdc1a)
+![postspark_export_2025-05-19_12-14-55](https://github.com/user-attachments/assets/b1f50a5d-f098-4e5e-971b-618357d9ca08)
 
 ---
 
