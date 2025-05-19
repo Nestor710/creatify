@@ -11,8 +11,24 @@ const IBMPlex = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-	title: "CreatifyAI",
-	description: "AI-powered image generator",
+	title: "Creatify | AI-powered image generator",
+	description: "AI-powered image generator for creative professionals",
+	keywords: ["AI", "image generator", "creative professionals", "AI-powered", "image generator", "AI-powered image generator", "AI-powered image generator for creative professionals"],
+	openGraph: {
+		title: "Creatify | AI-powered image generator",
+		description: "AI-powered image generator for creative professionals",
+		type: "website",
+		locale: "en_US",
+		siteName: "Creatify",
+		images: [
+			{
+				url: "https://creatify.vercel.app/hero.webp",
+				width: 1200,
+				height: 630,
+				alt: "Creatify | AI-powered image generator",
+			},
+		]
+	},
 };
 
 export default function RootLayout({
