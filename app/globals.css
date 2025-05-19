@@ -80,7 +80,8 @@ html {
 }
 
 .auth {
-  @apply flex-center min-h-screen w-full bg-orange-100
+  @apply flex items-center justify-center min-h-screen w-full 
+    bg-gradient-to-b from-orange-300 via-orange-400 to-orange-600;
 }
 
 .root {
