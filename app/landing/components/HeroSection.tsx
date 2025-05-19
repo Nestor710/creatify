@@ -118,7 +118,7 @@ export function HeroSection() {
 				<div className="max-w-3xl mx-auto text-center mb-16">
 					<h1
 						ref={titleRef}
-						className="opacity-0 text-4xl md:text-5xl font-bold mb-6 text-orange-600 break-keep"
+						className="opacity-0 text-4xl md:text-5xl font-bold mb-6 text-gray-700 break-keep"
 					>
 						Image and Video Editing with AI in Seconds
 					</h1>
