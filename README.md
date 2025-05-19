@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎨 Creatify — Image & Video Tools with AI
 
-## Getting Started
+[](https://img.shields.io/badge/Live%20Demo-%F0%9F%94%B4%20Check%20it%20out!-green)
 
-First, run the development server:
+[](https://img.shields.io/badge/Repository-%F0%9F%94%97%20GitHub-blue)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Creatify es una herramienta basada en inteligencia artificial que permite a los usuarios generar imágenes y videos a partir de texto. Diseñada con una interfaz amigable e intuitiva, Creatify ofrece una experiencia fluida para creadores de contenido, diseñadores, marketers y cualquier persona que quiera dar vida a sus ideas con solo unas palabras.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Características principales
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- 🧠 **Generación de imágenes** desde descripciones de texto.
+- 🎞️ **Cambiar relación de aspecto de clips o videos** cortos y animaciones simples.
+- 🌐 Interfaz moderna, responsiva y fácil de usar.
+- 💾 Posibilidad de descargar los resultados generados.
+- 💡 Ideal para inspiración creativa, marketing visual, y más.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🌐 Demo en vivo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+👉 [creatifyai.vercel.app](https://creatifyai.vercel.app/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🛠️ Tecnologías utilizadas
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Frontend:** Next.js, Tailwind CSS.
+- **Backend/API:** MongoDB
+- **Auth:** Clerk Authentication and user management
+- **Deploy:** Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+
+## 📸 Capturas de pantalla
+
+### 🔹 Home
+
+[](https://github.com/user-attachments/assets/466655db-7d44-422c-94c5-47f0a8bd3fa6)
+
+### 🔹 Clerk Log in
+
+[](https://github.com/user-attachments/assets/c2c9deb7-cb3c-48b9-8445-623fd40e8f82)
+
+### 🔹 Dashboard
+
+[](https://github.com/user-attachments/assets/f37a6401-7fb1-4bb4-aa4b-5bfc2c5fdc1a)
+
+---
+
+## 🧠 ¿Cómo funciona?
+
+1. El usuario ingresa una descripción en lenguaje natural.
+2. La IA interpreta el texto y genera una imagen o video en base a ese prompt.
+3. El resultado puede visualizarse en tiempo real y descargarse.
+
+---
+
+## 🏁 ¿Por qué Creatify?
+
+Creatify nace con la intención de mejorar las skills y poner en prueba aprendizajes vistos en cursos. La idea del website es hacer más accesible la creación visual para todos. Ya seas diseñador, influencer, educador o simplemente un entusiasta de la creatividad, esta herramienta te brinda el poder de crear sin necesidad de software complejo ni habilidades técnicas avanzadas.
+
+---
+
+## 📂 Repositorio
+
+Puedes ver el código completo del proyecto aquí:
+
+🔗 https://github.com/Nestor710/creatify
+
+---
+
+## 👥Equipo
+
+Hecho con ❤️ por [Néstor](https://github.com/Nestor710)  y [Leonardo](https://github.com/leonardaraujo)
+¡Gracias por visitar este proyecto!
