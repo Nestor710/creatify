@@ -114,12 +114,16 @@ export function ComparisonSection() {
 							position={50}
 							itemOne={
 								<ReactCompareSliderImage
+									loading="lazy"
+									fetchPriority="low"
 									src={currentService.beforeImage}
 									alt={`Before ${currentService.name}`}
 								/>
 							}
 							itemTwo={
 								<ReactCompareSliderImage
+									loading="lazy"
+									fetchPriority="low"
 									src={currentService.afterImage}
 									alt={`After ${currentService.name} with Creatify`}
 								/>
