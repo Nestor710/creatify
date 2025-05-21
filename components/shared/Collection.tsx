@@ -20,7 +20,7 @@ import { formUrlQuery } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { ViewToggle } from "../ui/ViewToggle";
 import { useState } from "react";
-import { Edit } from "lucide-react";
+import { Archive, Edit } from "lucide-react";
 
 export const Collection = ({
   images,
@@ -61,10 +61,12 @@ export const Collection = ({
       <div className="collection-heading">
         <h2 className="h2-bold text-dark-600">Recent Edits</h2>
         {/* {hasSearch && <Search />} */}
-        <ViewToggle 
-          viewMode={viewMode}
-          onChange={setViewMode}
-        />
+        {
+          images.length > 0 && <ViewToggle 
+            viewMode={viewMode}
+            onChange={setViewMode}
+          />
+        }
       </div>
 
       <div>
@@ -133,8 +135,12 @@ export const Collection = ({
           </AnimatePresence>
         </motion.ul>
       ) : (
-        <div className="collection-empty">
-          <p className="p-20-semibold">Empty List</p>
+        <div className="collection-empty flex-center">
+          <div className="flex-center flex-col gap-2">
+            <Archive height={50} width={50} />
+            <p className="p-20-semibold text-orange-500">No items yet</p>
+            <p className="p-16-medium text-dark-600">Start creating your transformations now</p>
+          </div>
         </div>
       )}
 
