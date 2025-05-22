@@ -17,7 +17,7 @@ const MobileNav = () => {
     const pathname = usePathname()
 
     return (
-        <header className="header">
+        <header className="header fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
             <Link href="/" className="flex items-center gap-2 md:py-2">
                 <Image src="/logo-icon.png" alt="logo" width={25} height={25}/>
                 <h1 className="text-2xl font-semibold text-gradient">Creatify</h1> 
@@ -35,7 +35,7 @@ const MobileNav = () => {
                                 className="cursor-pointer"
                                 />
                         </SheetTrigger>
-                        <SheetContent className="sheet-content sm:w-64">
+                        <SheetContent className="sheet-content sm:w-64 z-[100]">
                             <>
                                 <div className="flex flex-row gap-2">
                                     <Image src="/logo-icon.png" alt="logo" width={30} height={10}/>

@@ -35,7 +35,7 @@ export const Collection = ({
   const router = useRouter();
   const searchParams = useSearchParams();
   const [viewMode, setViewMode] = useState<"card" | "table">("card");
-  
+  const [isAnimating, setIsAnimating] = useState(false);
 
   // PAGINATION HANDLER
   const onPageChange = (action: string) => {
@@ -50,88 +50,132 @@ export const Collection = ({
     router.push(newUrl, { scroll: false });
   };
 
+  // Variantes para contenedores con animaciones escalonadas
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.02,
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        when: "afterChildren",
+        staggerChildren: 0.01,
+        staggerDirection: -1
+      }
+    }
+  };
+
+  // Variantes mejoradas para elementos individuales
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 }
+    hidden: (i: number) => ({
+      opacity: 0,
+      y: 10,
+      scale: 0.98,
+      transition: {
+        type: "spring",
+        stiffness: 500,
+        damping: 25,
+        delay: i * 0.01
+      }
+    }),
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 700,
+        damping: 22,
+        delay: i * 0.01
+      }
+    }),
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      transition: {
+        duration: 0.1,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  // Manejador de cambio de vista con animación
+  const handleViewChange = (newMode: "card" | "table") => {
+    if (newMode === viewMode || isAnimating) return;
+    
+    setIsAnimating(true);
+    // Pequeño retraso para la transición
+    setTimeout(() => {
+      setViewMode(newMode);
+      setTimeout(() => setIsAnimating(false), 5);
+    }, 5);
   };
 
   return (
     <>
       <div className="collection-heading">
         <h2 className="h2-bold text-dark-600">Recent Edits</h2>
-        {/* {hasSearch && <Search />} */}
         <ViewToggle 
           viewMode={viewMode}
-          onChange={setViewMode}
+          onChange={handleViewChange}
+          disabled={isAnimating}
         />
       </div>
 
-      <div>
-        {
-          images.length > 0 && viewMode === "table" && (
-            <motion.div
-              variants={itemVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{ duration: 0.3, ease: "easeInOut", type: "spring" }}
-              className="w-full pb-5"
-            >
-              <div className="grid grid-cols-4">
-                <p className="col-span-1 p-20-semibold">Title</p>
-                <p className="col-span-1 p-20-semibold">Type</p>
-                <p className="col-span-1 p-20-semibold">Date</p>
-                <p className="col-span-1 p-20-semibold">Actions</p>
-              </div>
-            </motion.div>
-          )
-        }
-      </div>
+      {images.length > 0 && viewMode === "table" && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.1, ease: "easeInOut" }}
+          className="w-full pb-5"
+        >
+          <div className="grid grid-cols-4">
+            <p className="col-span-1 p-20-semibold">Title</p>
+            <p className="col-span-1 p-20-semibold">Type</p>
+            <p className="col-span-1 p-20-semibold">Date</p>
+            <p className="col-span-1 p-20-semibold">Actions</p>
+          </div>
+        </motion.div>
+      )}
 
       {images.length > 0 ? (
-        <motion.ul
-          className={`${viewMode === "card" ? "collection-list" : ""}`}
-          // opcional: usar `layout` si queremos animaciones de layout automático
-          layout
-          style={{ listStyle: 'none', padding: 0, margin: 0 }} // ajustar estilos si es necesario
-        >
-          <AnimatePresence>
-            {images.map((image) => {
-              if (viewMode === "card") {
-                return (
-                  <motion.div
-                    key={image.publicId}
-                    variants={itemVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    transition={{ duration: 0.3, ease: "easeInOut", type: "spring" }}
-                    style={{ marginBottom: '1rem' }}
-                    layout
-                  >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={viewMode}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={containerVariants}
+          >
+            <motion.ul
+              className={`${viewMode === "card" ? "collection-list" : "space-y-2"}`}
+              style={{ listStyle: 'none', padding: 0, margin: 0 }}
+            >
+              {images.map((image, index) => (
+                <motion.div
+                  key={image.publicId}
+                  custom={index}
+                  variants={itemVariants}
+                  layout
+                  layoutId={`image-${image._id}`}
+                  className={viewMode === "card" ? "mb-6" : "mb-2"}
+                >
+                  {viewMode === "card" ? (
                     <Card image={image} />
-                  </motion.div>
-                );
-              } else {
-                return (
-                  <motion.div
-                    key={image.publicId}
-                    variants={itemVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    transition={{ duration: 0.3, ease: "easeInOut", type: "spring" }}
-                    style={{ marginBottom: '1rem' }}
-                    layout
-                  >
+                  ) : (
                     <Table image={image} />
-                  </motion.div>
-                );
-              }
-            })}
-          </AnimatePresence>
-        </motion.ul>
+                  )}
+                </motion.div>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </AnimatePresence>
       ) : (
         <div className="collection-empty">
           <p className="p-20-semibold">Empty List</p>
@@ -168,20 +212,31 @@ export const Collection = ({
 };
 
 const Card = ({ image }: { image: IImage }) => {
+  const [imageError, setImageError] = useState(false);
+  
   return (
     <li>
       <Link href={`/transformations/${image._id}`} className="collection-card">
-        <CldImage
-          src={image.publicId}
-          alt={image.title}
-          width={image.width}
-          height={image.height}
-          {...image.config}
-          loading="lazy"
-          className="h-52 w-full rounded-[10px] object-cover"
-          sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
-        />
-        <div className="flex-between">
+        <div className="relative h-52 w-full rounded-[10px] overflow-hidden">
+          {!imageError ? (
+            <CldImage
+              src={image.publicId}
+              alt={image.title}
+              width={image.width || 400}
+              height={image.height || 300}
+              {...image.config}
+              loading="lazy"
+              className="h-52 w-full object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-gray-200 rounded-[10px]">
+              <p className="text-gray-500">No se pudo cargar la imagen</p>
+            </div>
+          )}
+        </div>
+        <div className="flex-between mt-3">
           <p className="p-20-semibold mr-3 line-clamp-1 text-dark-600">
             {image.title}
           </p>
@@ -212,7 +267,7 @@ const Table = ({ image }: { image: IImage }) => {
 
   return (
     <>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-4 hover:bg-gray-50 p-2 rounded-lg transition-colors">
         <p className="col-span-1 p-20-semibold mr-3 line-clamp-1 text-dark-600 capitalize">
           {image.title}
         </p>
