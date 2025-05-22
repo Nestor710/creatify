@@ -10,8 +10,8 @@ const Sidebar = () => {
         <aside className="sidebar">
             <div className="flex size-full flex-col gap-4">
                 <Link href="/" className="sidebar-logo">
-                    <Image src="/logo-icon.png" alt="logo" className="w-auto h-auto mr-2" width={180} height={28}/>
-                    <h1 className="text-4xl font-bold text-gradient">Creatify</h1>  
+                    <Image src="/logo-icon.png" alt="logo" className="w-auto h-auto mr-2" width={180} height={180}/>
+                    <h1 className="text-4xl font-bold text-gradient pb-1">Creatify</h1>  
                 </Link>
 
                 <nav className="sidebar-nav">
