@@ -277,7 +277,7 @@ html {
   }
 
   .collection-empty {
-    @apply flex-center h-60 w-full rounded-[10px] border border-dark-400/10 bg-white/20;
+    @apply h-60 w-full rounded-[10px] border border-orange-200 bg-orange-500/10;
   }
 
   .collection-btn {
